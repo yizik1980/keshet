@@ -1,0 +1,7 @@
+<div class="view">
+    <div class="container-fluid " *ngIf="dailyForcast.length">
+        <div class="wrap">
+            <app-weather-item class="relative mr-3 mb-3" [weather]="forcast" *ngFor="let forcast of dailyForcast"></app-weather-item>
+        </div>
+    </div>
+</div>

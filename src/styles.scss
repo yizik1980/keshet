@@ -1,0 +1,326 @@
+/* You can add global styles to this file, and also import other style files */
+
+html {
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    padding: 0;
+    text-align: center;
+    margin: 0;
+}
+
+body {
+    position: relative;
+    background-color: aqua;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.bottom {
+    bottom: 3px;
+}
+
+.left {
+    left: 3px;
+}
+
+.right {
+    right: 3px;
+}
+
+:root {
+    --gray: #ccc;
+}
+
+.fixed {
+    position: fixed;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+app-header {
+    display: block;
+    margin: 1% 0px;
+    padding: 0px;
+}
+
+.puls {
+    padding: 3%;
+    font-size: 2rem;
+}
+
+.plus {
+    &:after {
+        content: "\f067";
+    }
+}
+
+.close {
+    &::after {
+        content: "\f00d";
+    }
+}
+
+.fadding-white {
+    background: rgba(256, 256, 256, 0.6);
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+    &:active {
+        text-decoration: none;
+    }
+}
+
+.full-height {
+    height: 60vh;
+    height: 100%;
+    height: 100%;
+}
+
+header {
+    display: block;
+}
+
+@media screen and (max-width:800px) {
+    app-weather-item {
+        width: 91%;
+    }
+    router-outlet {
+        display: block;
+    }
+    .full-height {
+        height: auto;
+    }
+}
+
+.mainContent {
+    width: 89%;
+    margin: 0 0 0 auto;
+}
+
+.both {
+    &::after {
+        content: "";
+        clear: both;
+        display: block;
+    }
+}
+
+.l-padding {
+    padding: 2%;
+}
+
+.fixed {
+    position: fixed;
+}
+
+.sticky {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+}
+
+.relative {
+    position: relative;
+}
+
+.auction {
+    h4.both {
+        background: rgba(256, 256, 256, 0.4);
+        &:after {
+            width: 100%;
+            content: "";
+            height: 2px;
+            background: #000;
+        }
+    }
+    p.valueAuction {
+        background: rgba(256, 256, 256, 0.4);
+        padding: 1%;
+    }
+}
+
+.js-center {
+    justify-content: center;
+}
+
+.line {
+    height: 2px;
+    width: 90%;
+    background-color: #07090e;
+    margin: 2% auto;
+}
+
+button {
+    background: transparent;
+    box-shadow: unset;
+    color: #0e1119;
+    border: none;
+    cursor: pointer;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.bottom {
+    bottom: 2%;
+}
+
+.center {
+    text-align: center;
+}
+
+.padding {
+    padding: 2%;
+}
+
+.justify-center {
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+app-autocomplete {
+    position: relative;
+    display: block;
+}
+
+:focus {
+    outline: 0;
+    box-shadow: 0 0 2px 2px #d6d2d2;
+}
+
+.row {
+    width: 80%;
+    margin: 2% auto;
+}
+
+.load {
+    padding: 5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-origin: center center;
+    transform: translate(-50%, -50%) rotate(45deg);
+    width: 50px;
+    height: 50px;
+}
+
+svg {
+    width: 100%;
+    height: auto;
+}
+
+.bubble-error {
+    background: #67a8e9;
+    padding: 2% 9px;
+    box-sizing: border-box;
+    display: flex;
+    border-radius: 5px;
+    box-shadow: -5px 1px 0.3px 1px #ccc;
+    align-content: space-around;
+    align-items: stretch;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    p {
+        margin: 0;
+        padding: 0s;
+    }
+}
+
+.load hr {
+    border: 0;
+    margin: 0;
+    width: 40%;
+    height: 40%;
+    position: absolute;
+    border-radius: 50%;
+    animation: spin 2s ease infinite;
+}
+
+.load :first-child {
+    background: #19a68c;
+    animation-delay: -1.5s;
+}
+
+.load :nth-child(2) {
+    background: #f63d3a;
+    animation-delay: -1s;
+}
+
+.load :nth-child(3) {
+    background: #fda543;
+    animation-delay: -0.5s;
+}
+
+.load :last-child {
+    background: #193b48;
+}
+
+@keyframes spin {
+    0%,
+    100% {
+        transform: translateX(200%);
+    }
+    25% {
+        transform: translateY(200%);
+    }
+    50% {
+        transform: translateX(0);
+    }
+    75% {
+        transform: translateY(0);
+    }
+}
+
+.search {
+    box-sizing: border-box;
+    position: relative;
+    display: block;
+    transform: scale(var(--ggs, 1));
+    width: 16px;
+    height: 16px;
+    border: 2px solid;
+    border-radius: 100%;
+    margin-left: -4px;
+    margin-top: -4px
+}
+
+.search::after {
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    position: absolute;
+    border-radius: 3px;
+    width: 2px;
+    height: 8px;
+    background: currentColor;
+    transform: rotate(-45deg);
+    top: 10px;
+    left: 12px
+}
+
+span.temperture {
+    position: relative;
+    &::after {
+        content: "";
+        width: 5px;
+        height: 5px;
+        border: 1px solid #000;
+        position: absolute;
+        border-radius: 50%;
+        top: .51rem;
+        right: -5px;
+    }
+}

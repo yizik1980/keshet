@@ -1,0 +1,15 @@
+<nav class="d-flex justify-content-around align-items-center">
+    <app-search-city class="block m-2"></app-search-city>
+    <main class="pt-2 pb-2">
+        <h1><span>{{data?.temperture?.Value }}</span><span class="temperture">{{data?.temperture?.Unit }}</span></h1>
+        <h2>{{ selectCity?.name}}</h2>
+        <span [title]="data?.weatherDescription">{{ data?.weatherDescription }}</span>
+
+    </main>
+    <div class="pt-2 pb-2">
+        <h4>{{ data?.currentDate | date: "dd/MM/yyyy hh:mm" }}</h4>
+    </div>
+    <div class="logo">
+        <h1>YM</h1>
+    </div>
+</nav>

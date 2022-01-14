@@ -1,0 +1,26 @@
+ul,
+li {
+    list-style: none;
+    display: block;
+}
+
+ul {
+    position: absolute;
+    width: 98%;
+    margin: 0px auto;
+    top: 0px;
+    left: 3px;
+    background: #fff;
+    padding: 0px;
+    z-index: 2;
+    li {
+        padding: 2%;
+        box-shadow: 0 0 0 1px #ccc;
+        cursor: pointer;
+        transition: all .4s ease-in-out;
+        background: #fff;
+        &:hover {
+            background-color: rgb(147, 122, 223);
+        }
+    }
+}

@@ -1,0 +1,9 @@
+<div class="wrap flex center">
+    <div class="select relative">
+        <input tabindex="0" autofocus tabindex="1" #autocompelet autofocus class="form-control" [(ngModel)]="choosenCityName" placeholder="choose location">
+        <span class="search"></span>
+        <app-autocomplete [cities]="cities" (SelectEvent)="selectCity($event)"></app-autocomplete>
+    </div>
+
+
+</div>

@@ -1,0 +1,16 @@
+.close {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+}
+
+.day {
+    background-color: aliceblue;
+    min-height: 40px;
+}
+
+.night {
+    background-color: #000;
+    color: #fff;
+    min-height: 40px;
+}

@@ -1,0 +1,28 @@
+<div>
+    <!-- <aside class="close fa" (click)="removeForcast()"></aside> -->
+
+    <div class="content">
+        <div class="d-flex justify-content-lg-around flex-sm-row flex-column align-items-center">
+            <h4>{{weather?.Date| date:"dd/MM"}}</h4>
+            <div class="d-flex justify-content-center align-self-stretch">
+                <div class="day p-2">
+                    {{weather?.Day?.IconPhrase}}
+                </div>
+                <div class="night p-2">
+                    {{weather?.Night?.IconPhrase}}
+                </div>
+            </div>
+            <h5>
+                <span>{{weather?.Temperature?.Maximum?.Value}}C<sup>o</sup></span> -
+                <span>{{weather?.Temperature?.Minimum?.Value}}C<sup>o</sup></span>
+            </h5>
+            <h5> {{weather?.Day?.IconPhrase}}</h5>
+            <img src="{{weather?.Night?.IconUrl}}" alt="special icon">
+            <!-- <app-weather-icons [iconType]="weather?.Day?.IconPhrase"></app-weather-icons> -->
+
+        </div>
+
+
+    </div>
+
+</div>

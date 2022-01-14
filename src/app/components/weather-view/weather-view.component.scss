@@ -1,0 +1,23 @@
+.full-height {
+    height: 70vh;
+}
+
+svg.inline-block {
+    height: 50px;
+    width: 50px;
+}
+
+.right {
+    float: right;
+}
+
+.view {
+    width: 70%;
+    margin: 1% auto;
+}
+
+@media screen and (max-width:800px) {
+    .full-height {
+        height: auto;
+    }
+}

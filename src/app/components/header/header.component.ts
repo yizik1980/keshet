@@ -9,17 +9,18 @@ import { AppState } from 'src/app/reducers';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit , OnDestroy {
+export class HeaderComponent implements OnInit, OnDestroy {
   subScriptionList = new Array<Subscription>();
   selectCity: { name: string; key: string; } | undefined;
-  data:{
-    currentDate:Date,
-    weatherDescription:string,
+  data: {
+    currentDate: Date,
+    weatherDescription: string,
     temperture: TemperatureType,
+    iconSrc: string
   } | undefined;
   constructor(private store: Store<AppState>) { }
   ngOnDestroy(): void {
-    this.subScriptionList.map(item=>item.unsubscribe());
+    this.subScriptionList.map(item => item.unsubscribe());
   }
 
   ngOnInit(): void {
@@ -27,25 +28,29 @@ export class HeaderComponent implements OnInit , OnDestroy {
       .subscribe(selectedCity => {
         this.selectCity = selectedCity;
       });
-      // weather data
+    // weather data
     const subscriptionWeather = this.store.select(st => st.weather?.weatherData)
       .pipe(map(res => {
-        if(!res){
+        if (!res) {
           return res;
         }
-        const {Maximum,Minimum} = res.DailyForecasts[0].Temperature;
+        debugger;
+        const { Temperature: { Maximum }, Day, Night } = res.DailyForecasts[0];
+        const d = new Date().getHours();
+
         return {
           currentDate: res.Headline.EffectiveDate,
           weatherDescription: res.Headline.Text,
-          temperture: Maximum
+          temperture: Maximum,
+          iconSrc: d > 6 || d <= 18 ? Day.IconUrl : Night.IconUrl
         }
       }))
       .subscribe(data => {
-        if(data)
-        this.data = data;
+        if (data)
+          this.data = data;
       });
 
-      this.subScriptionList = [subscriptionSelection,subscriptionWeather];
+    this.subScriptionList = [subscriptionSelection, subscriptionWeather];
   }
 
 }

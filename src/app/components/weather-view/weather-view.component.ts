@@ -27,28 +27,7 @@ export class WeatherViewComponent implements OnInit, OnDestroy {
     
 
     this.subscriptioWeather = this.store.select(st => st.weather?.weatherData?.DailyForecasts)
-      .pipe(map(res => {
-          if(!res){
-            return res;
-          }
-          return  res.map(item => {
-              const Dayicon = item.Day.Icon > 10 ? item.Day.Icon + '' : '0' + item.Day.Icon;
-              const Nighticon = item.Night.Icon > 10 ? item.Night.Icon + '' : '0' + item.Night.Icon;
-              return {
-                ...item,
-                Day: {
-                  ...item.Day,
-                  IconUrl: `${environment.iconsUrl}/${Dayicon}-s.png`
-                },
-                Night: {
-                  ...item.Night,
-                  IconUrl: `${environment.iconsUrl}/${Nighticon}-s.png`
-                },
-              };
-            });
-          
-        
-      })).subscribe(forcastList => {
+    .subscribe(forcastList => {
         if(forcastList)
         this.dailyForcast = forcastList;
       })

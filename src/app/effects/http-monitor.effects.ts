@@ -9,6 +9,7 @@ import { of } from 'rxjs';
 import {  failureAction } from '../actions/error.action';
 import { LoadWeathersSuccessAction } from '../actions/weather.actions';
 import { HttpErrorResponse } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class HttpMonitorEffects {
@@ -36,8 +37,31 @@ export class HttpMonitorEffects {
   weatherEffect$ = this.weatherActions$.pipe(ofType(selectCity)).pipe(
      switchMap((loc: any) => {
       return this.http.getCurrentWheaterFormLocation(loc.key)
-        .pipe(map(weatherOb => LoadWeathersSuccessAction({ data: weatherOb })))
-    })).pipe(catchError((err:HttpErrorResponse) => {
+    }))
+    .pipe(map(weatherOb =>{
+      const cloneWeather = {
+        ...weatherOb,
+        DailyForecasts:weatherOb.DailyForecasts.map(item => {
+          const Dayicon = item.Day.Icon > 10 ? item.Day.Icon + '' : '0' + item.Day.Icon;
+          const Nighticon = item.Night.Icon > 10 ? item.Night.Icon + '' : '0' + item.Night.Icon;
+          return {
+            ...item,
+            Day: {
+              ...item.Day,
+              IconUrl: `${environment.iconsUrl}${Dayicon}-s.png`
+            },
+            Night: {
+              ...item.Night,
+              IconUrl: `${environment.iconsUrl}${Nighticon}-s.png`
+            },
+          };
+        })
+      };
+      
+    return LoadWeathersSuccessAction({ data: cloneWeather })
+    }
+     ))
+    .pipe(catchError((err:HttpErrorResponse) => {
       return of(failureAction({error:err.message}));
     }));
 

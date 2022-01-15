@@ -1,25 +1,24 @@
-<div>
+<div class="back">
     <!-- <aside class="close fa" (click)="removeForcast()"></aside> -->
 
-    <div class="content">
-        <div class="d-flex justify-content-start flex-sm-row flex-column align-items-center">
-            <h4 class="ml-2">{{weather?.Date| date:"dd/MM"}}</h4>
-            <div class="d-flex justify-content-center align-self-stretch ml-2">
-                <div class="day p-2 ">
-                    {{weather?.Day?.IconPhrase}}
-                </div>
-                <div class="night p-2">
-                    {{weather?.Night?.IconPhrase}}
-                </div>
+    <div class="content d-flex align-items-center">
+
+        <h4 class="ml-2">{{weather?.Date| date:"dd/MM"}}</h4>
+        <div class="d-flex justify-content-center align-self-stretch ml-2">
+            <div class="day p-2 ">
+                {{weather?.Day?.IconPhrase}}
             </div>
-            <h5 class="ml-2">
-                <span>{{weather?.Temperature?.Maximum?.Value}}C<sup>o</sup></span> -
-                <span>{{weather?.Temperature?.Minimum?.Value}}C<sup>o</sup></span>
-            </h5>
-            <h5 class="ml-2"> {{weather?.Day?.IconPhrase}}</h5>
-            <img src="{{iconSrcDay}}" alt="special icon">
-            <img src="{{iconSrcNight}}" alt="special icon">
+            <div class="night p-2">
+                {{weather?.Night?.IconPhrase}}
+            </div>
         </div>
+        <h5 class="ml-2">
+            <span>{{weather?.Temperature?.Maximum?.Value}}C<sup>o</sup></span> -
+            <span>{{weather?.Temperature?.Minimum?.Value}}C<sup>o</sup></span>
+        </h5>
+        <h5 class="ml-2"> {{weather?.Day?.IconPhrase}}</h5>
+        <img src="{{iconSrcDay}}" alt="special icon">
+        <img src="{{iconSrcNight}}" alt="special icon">
 
 
     </div>

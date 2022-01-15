@@ -14,3 +14,9 @@
     color: #fff;
     min-height: 40px;
 }
+
+.content {
+    justify-content: space-between;
+}
+
+.back {}

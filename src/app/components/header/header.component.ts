@@ -18,6 +18,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     temperture: TemperatureType,
     iconSrc: string
   } | undefined;
+  show = false;
   constructor(private store: Store<AppState>) { }
   ngOnDestroy(): void {
     this.subScriptionList.map(item => item.unsubscribe());
@@ -34,7 +35,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
         if (!res) {
           return res;
         }
-        debugger;
         const { Temperature: { Maximum }, Day, Night } = res.DailyForecasts[0];
         const d = new Date().getHours();
 

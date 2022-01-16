@@ -1,7 +1,7 @@
 <div class="relative">
-    <div class=" full-height center" *ngIf="showApp">
-        <app-header></app-header>
-        <router-outlet></router-outlet>
+    <div class=" full-height center">
+        <app-header (toggleViewEmitter)="toggleView($event)"></app-header>
+        <app-weather-view *ngIf="showDropDown"></app-weather-view>
     </div>
     <app-error class="fixed bottom left"></app-error>
     <app-message class="fixed bottom right"></app-message>

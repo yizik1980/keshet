@@ -10,6 +10,7 @@ import { ErrorState } from './reducers';
 })
 export class AppComponent implements OnInit {
   showApp: boolean;
+  showDropDown = false;
   constructor(private store: Store<ErrorState>) {
     this.showApp = false;
   }
@@ -18,5 +19,8 @@ export class AppComponent implements OnInit {
     if (!navigator.onLine) {
       this.store.dispatch(failureAction({ error: 'Your are Working OffLine' }));
     }
+  }
+  toggleView($event:boolean){
+    this.showDropDown = $event;
   }
 }

@@ -1,8 +1,10 @@
 <nav class="d-flex justify-content-around align-items-center">
     <app-search-city class="block m-2"></app-search-city>
-    <main class="pt-2 pb-2">
-        <h1><span>{{data?.temperture?.Value }}</span><span class="temperture">{{data?.temperture?.Unit }}</span></h1>
-        <h2>{{ selectCity?.name}}</h2>
+    <main class="pt-2 pb-2 cursor d-flex align-items-center justify-content-around cursor" (click)="toggleBar()">
+        <aside>
+            <h1><span>{{data?.temperture?.Value }}</span><span class="temperture">{{data?.temperture?.Unit }}</span></h1>
+            <h2>{{ selectCity?.name}}</h2>
+        </aside>
         <img [src]="data?.iconSrc" alt="daily wheather icon">
 
     </main>

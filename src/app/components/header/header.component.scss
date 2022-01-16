@@ -1,7 +1,7 @@
 nav {
     border-bottom: 1px solid #ccc;
     main {
-        width: 30%;
+        width: 20%;
         span {
             white-space: nowrap;
             overflow: hidden;
@@ -9,6 +9,10 @@ nav {
             text-overflow: ellipsis;
         }
     }
+}
+
+app-search-city {
+    width: 30%;
 }
 
 ul {

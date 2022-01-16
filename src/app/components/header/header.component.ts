@@ -1,7 +1,8 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { map, Subscription } from 'rxjs';
-import { TemperatureType, WeatherData } from 'src/app/model/weather';
+import { selectCity } from 'src/app/actions/city.actions';
+import { TemperatureType } from 'src/app/model/weather';
 import { AppState } from 'src/app/reducers';
 
 @Component({
@@ -10,6 +11,8 @@ import { AppState } from 'src/app/reducers';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit, OnDestroy {
+  @Output()
+  toggleViewEmitter = new EventEmitter<boolean>();
   subScriptionList = new Array<Subscription>();
   selectCity: { name: string; key: string; } | undefined;
   data: {
@@ -22,6 +25,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   constructor(private store: Store<AppState>) { }
   ngOnDestroy(): void {
     this.subScriptionList.map(item => item.unsubscribe());
+    this.toggleViewEmitter.unsubscribe();
   }
 
   ngOnInit(): void {
@@ -46,11 +50,19 @@ export class HeaderComponent implements OnInit, OnDestroy {
         }
       }))
       .subscribe(data => {
-        if (data)
+        if (data){
           this.data = data;
+          this.toggleBar()
+        }
       });
+    //init default city locatio
+    this.store.dispatch(selectCity({ key: '215854', name: 'Tel Aviv' }));
 
     this.subScriptionList = [subscriptionSelection, subscriptionWeather];
+  }
+  toggleBar(){
+    this.show = !this.show;
+    this.toggleViewEmitter.emit(this.show);
   }
 
 }

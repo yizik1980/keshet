@@ -34,13 +34,17 @@ export class SearchCityComponent implements OnInit, OnDestroy {
       .pipe(debounce(ev => {
         return ev.key === 'Enter' ? timer(0):timer(1000);
       }));
+
       fromEvent<InputEvent>(this.autocompelet.nativeElement, 'focus')
       .subscribe((e: InputEvent) => {
         this.cities = new Array<city>();
-        observeInput.subscribe((ev: any) => {
-          if (ev.target.value && ev.target.value.length > 2) {
+        observeInput.subscribe((ev: KeyboardEvent) => {
+          let target = ev.target as HTMLInputElement;
+          if (target.value && target.value.length > 2) {
             this.showLoader = true;
-            this.store.dispatch(LoadCitiesAction({ city: ev.target.value }));
+            this.store.dispatch(LoadCitiesAction({ city: target.value }));
+          }else{
+            this.cities = new Array<city>();
           }
         });
       })
